@@ -9,5 +9,13 @@
 <p>do you want some pizza?</p>
 <p>MENU<p>
 <img src="static/img.png">
+<ul>
+    {"% for menu in menus%}
+    <li>
+        {{ menu.dishes}} - {{  menu.price }}£
+
+    </li>
+    {% endfor%}
+</ul>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 app = Flask(__name__)
-menu = [
+menus = [
     {"dishes": "Пепероні", "price": 100},
     {"dishes": "Капрічоза ", "price": 78},
     {"dishes": "Маргарита ", "price": 100},
@@ -12,7 +12,12 @@ menu = [
 @app.route("/")
 @app.route("/index/")
 def index():
-    return render_template("index.html")
+    contex = {"pizzas " : menus
+    }
+    return render_template("index.html",**context )
+
+context = {"pizzas ": menus
+          }
 
 
 app.run(host="0.0.0.0", port=64000, debug=True)
