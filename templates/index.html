@@ -10,7 +10,7 @@
 <p>MENU<p>
 <img src="static/img.png">
 <ul>
-    {"% for menu in menus%}
+    {"% for menu in menus sort(attribute="price" %}
     <li>
         {{ menu.dishes}} - {{  menu.price }}£
 
