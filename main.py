@@ -1,23 +1,34 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
+from flask import url_for
+from datetime import datetime
+import random
+
 app = Flask(__name__)
-menus = [
-    {"dishes": "Пепероні", "price": 100},
-    {"dishes": "Капрічоза ", "price": 78},
-    {"dishes": "Маргарита ", "price": 100},
-    {"dishes": "Баварська ", "price": 93},
-    {"dishes": "Диявола", "price": 99}
+
+menu_pizza=[
+    {'pizza': 'Карбонара', 'price': 300},
+    {'pizza': 'Пеппероні', 'price': 250},
+    {'pizza': 'Салямі', 'price': 249},
+    {'pizza': 'Гавайська', 'price': 200}
 ]
 
 
-@app.route("/")
-@app.route("/index/")
-def index():
-    contex = {"pizzas " : menus
+@app.route('/')
+def horoskope():
+    return render_template('index.html')
+
+@app.route('/menu/')
+def show_menu():
+    context = {
+        'pizzas': menu_pizza
     }
-    return render_template("index.html",**context )
-
-context = {"pizzas ": menus
-          }
+    return render_template('menu.html', **context)
 
 
-app.run(host="0.0.0.0", port=64000, debug=True)
+@app.route('/order')
+def make_order():
+    return render_template('order.html')
+
+if __name__ == '__main__':
+    app.run(port=8086, debug=True)

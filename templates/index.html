@@ -2,20 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pizaria Vovy</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')  }}">
+    <title>Oderman</title>
 </head>
 <body>
-<h1>Welcome to my pizaria PizzaStark2007</h1>
-<p>do you want some pizza?</p>
-<p>MENU<p>
-<img src="static/img.png">
-<ul>
-    {"% for menu in menus sort(attribute="price" %}
-    <li>
-        {{ menu.dishes}} - {{  menu.price }}£
+    <h1>Dominos Pizza</h1>
+    <nav>
 
-    </li>
-    {% endfor%}
-</ul>
+    {% for Menu in ['show_menu']%}
+    <a href="{{ url_for(Menu) }}">{{ Menu }}</a>
+    {% endfor %}
+
+</nav>
+
+    <nav>
+
+    {% for Order in ['make_order']%}
+    <a href="{{ url_for(Order) }}">{{ Order }}</a>
+    {% endfor %}
+
+</nav>
+
+
+    <img src="static/dominos-pizza.jpg">
 </body>
 </html>
